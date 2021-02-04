@@ -21,6 +21,8 @@ const cards = document.querySelectorAll('.destination-card');
 const searchQuery = () => {
     let query = currentURL.search.split('=')[1];
     console.log(query)
-    cards.forEach(card => {card.innerText.includes(query) ? console.log(card) : null});
+    // cards.forEach(card => {card.innerText.includes(query) ? card : null});
+    const cardsArr = Array.from(cards);
+    cardsArr.filter(card => card.innerText.includes(query) ? console.log(card) : null)
 }
-searchQuery();
+window.addEventListener('DOMContentLoaded', searchQuery());
