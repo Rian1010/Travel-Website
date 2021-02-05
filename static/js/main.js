@@ -18,6 +18,7 @@ window.onscroll = () => {
 const currentURL = new URL(window.location);
 const cards = document.querySelector('.cards');
 const destinationCards = document.querySelectorAll('.destination-card');
+const notFound = document.querySelector('.not-found');
 
 const destinations = [{
         id: 1,
@@ -44,27 +45,27 @@ const destinations = [{
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae hic voluptate, corrupti ipsam soluta tempora magni distinctio illum non. Vitae.'
     },
 ]
-window.addEventListener('DOMContentLoaded', () => {
-    destinations.forEach(destination => {
-        const div = document.createElement("div");
-        const heading = document.createElement("h3");
-        const paragraph = document.createElement("p");
+// window.addEventListener('DOMContentLoaded', () => {
+//     destinations.forEach(destination => {
+//         const div = document.createElement("div");
+//         const heading = document.createElement("h3");
+//         const paragraph = document.createElement("p");
 
-        div.className += "destination-card";
+//         div.className += "destination-card";
 
         
-        heading.textContent = destination.title;
-        paragraph.textContent = destination.description;
-        cards.appendChild(div)
-        div.appendChild(heading);
-        div.appendChild(paragraph);
-    });
-})
+//         heading.textContent = destination.title;
+//         paragraph.textContent = destination.description;
+//         cards.appendChild(div)
+//         div.appendChild(heading);
+//         div.appendChild(paragraph);
+//     });
+// })
 const searchQuery = () => {
     let query = currentURL.search.split('=')[1];
     
     const cardsArr = Array.from(destinationCards);
-    nodes = cards.childNodes;
+    // nodes = cards.childNodes;
     // nodesArr = Array.from(nodes);
     // let arr = []
     // for (let i=0; i<nodes.length; i++) {
@@ -75,9 +76,15 @@ const searchQuery = () => {
 
     // console.log([...nodes]);
     console.log(query)
-    console.log(cardsArr)
-    console.log(nodes)
-    cardsArr.filter(card => card.innerText.includes(query) ? console.log(card) : null);
+    const destinationArr = Array.from(destinationCards);
+    
+
+    if (query !== undefined) {
+        destinationArr.filter(destination => !destination.innerText.includes(query) ? destination.style.display = 'none' : destination);
+        destinationArr.forEach(dest => dest.style.display === 'none' ? notFound.innerHTML = "<h2 style='text-align: center;'>Kein Artikel Gefunden<h2>" : console.log("else"))
+    }
+
+    // dest.filter(card => card.innerText.includes(query) ? console.log(cards.appendChild(card)) : null);
     // destinations.filter(destination => destination.title.includes(query) || destination.description.includes(query) ? console.log(destination) : null)
 }
 window.addEventListener('DOMContentLoaded', searchQuery());
