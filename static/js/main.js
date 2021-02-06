@@ -20,31 +20,6 @@ const cards = document.querySelector('.cards');
 const destinationCards = document.querySelectorAll('.destination-card');
 const notFound = document.querySelector('.not-found');
 
-const destinations = [{
-        id: 1,
-        image: '',
-        title: 'Vereisen Sie in die Türkei!',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae hic voluptate, corrupti ipsam soluta tempora magni distinctio illum non. Vitae.'
-    },
-    {
-        id: 2,
-        image: '',
-        title: 'Ferien in Singapore!',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae hic voluptate, corrupti ipsam soluta tempora magni distinctio illum non. Vitae.'
-    },
-    {
-        id: 3,
-        image: '',
-        title: 'Ab nach Mauritius!',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae hic voluptate, corrupti ipsam soluta tempora magni distinctio illum non. Vitae.'
-    },
-    {
-        id: 4,
-        image: '',
-        title: 'Die Chinesische Kultur.',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae hic voluptate, corrupti ipsam soluta tempora magni distinctio illum non. Vitae.'
-    },
-]
 // window.addEventListener('DOMContentLoaded', () => {
 //     destinations.forEach(destination => {
 //         const div = document.createElement("div");
@@ -53,7 +28,7 @@ const destinations = [{
 
 //         div.className += "destination-card";
 
-        
+
 //         heading.textContent = destination.title;
 //         paragraph.textContent = destination.description;
 //         cards.appendChild(div)
@@ -63,31 +38,20 @@ const destinations = [{
 // })
 const searchQuery = () => {
     let query = currentURL.search.split('=')[1];
-    
-    const cardsArr = Array.from(destinationCards);
-    // nodes = cards.childNodes;
-    // nodesArr = Array.from(nodes);
-    // let arr = []
-    // for (let i=0; i<nodes.length; i++) {
-    //     arr.push(nodes[i]);
-    // }
-
-    // console.log(Array.prototype.slice.call(nodes));
-
-    // console.log([...nodes]);
     console.log(query)
-    const destinationArr = Array.from(destinationCards);
-    
+    destinationsLowerCase = destinationCards;
+    const destinationArr = Array.from(destinationsLowerCase);
 
     if (query !== undefined) {
-        destinationArr.filter(destination => !destination.innerText.includes(query) ? destination.style.display = 'none' : destination);
-        destinationArr.forEach(dest => dest.style.display === 'none' ? notFound.innerHTML = "<h2 style='text-align: center;'>Kein Artikel Gefunden<h2>" : console.log("else"))
+        destinationArr.filter(destination => destination.innerText.includes(query) || destination.innerText.toLowerCase().includes(query) ? destination : destination.style.display = 'none');
+        destinationArr.forEach(destination => destination.style.display === 'none' ? notFound.innerHTML = "<h2 style='text-align: center;'>Kein Artikel Gefunden<h2>" : notFound.style.display = 'none')
     }
 
     // dest.filter(card => card.innerText.includes(query) ? console.log(cards.appendChild(card)) : null);
     // destinations.filter(destination => destination.title.includes(query) || destination.description.includes(query) ? console.log(destination) : null)
 }
 window.addEventListener('DOMContentLoaded', searchQuery());
+
 
 
 
