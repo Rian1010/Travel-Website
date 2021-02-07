@@ -13,7 +13,8 @@ body {
 }
 
 .heading-2 {
-    font-size: 24px;;
+    font-size: 24px;
+    ;
     text-align: center;
 }
 
@@ -92,8 +93,13 @@ body {
 }
 
 @keyframes fader {
-    from {opacity: 0.1;}
-    to {opacity: 1;}
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .banner-2 {
@@ -160,7 +166,7 @@ body {
 
 #prev:hover {
     cursor: pointer;
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
 }
 
 .fa-chevron-left {
@@ -171,8 +177,9 @@ body {
 /* Destionation */
 .cards-section {
     padding: 20px 0;
-    
+
 }
+
 .destination-card {
     max-width: 416px;
     margin: 20px 20px;
@@ -182,7 +189,7 @@ body {
 .cards {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-row: auto auto auto ;
+    grid-row: auto auto auto;
 }
 
 .cards-home {
@@ -231,3 +238,9 @@ body {
     background-size: cover;
 }
 
+
+
+/* Map */
+#map {
+    height: 70vh;
+}
