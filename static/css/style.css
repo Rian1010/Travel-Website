@@ -71,21 +71,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 10px solid blue;
 }
 
 .banner {
     min-width: 110%;
     height: 110vh;
+    position: relative;
+
     /* https://pixabay.com/photos/travel-lake-feet-resting-hiking-1749508/ */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: -1;
+}
+
+.fade {
+    animation-name: fader;
+    animation-duration: 1s;
+}
+
+@keyframes fader {
+    from {opacity: 0.1;}
+    to {opacity: 1;}
 }
 
 .banner-2 {
@@ -103,6 +111,14 @@ body {
     z-index: -1;
 }
 
+.banner-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .carousel {
     display: flex;
 }
@@ -110,6 +126,46 @@ body {
 .banner-title {
     color: #fff;
     font-size: 50px;
+}
+
+#next {
+    width: 25%;
+    height: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+}
+
+#next:hover {
+    cursor: pointer;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
+}
+
+.fa-chevron-right {
+    color: #fff;
+    font-size: 70px;
+}
+
+#prev {
+    width: 25%;
+    height: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+}
+
+#prev:hover {
+    cursor: pointer;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.fa-chevron-left {
+    color: #fff;
+    font-size: 70px;
 }
 
 /* Destionation */
@@ -174,3 +230,4 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
