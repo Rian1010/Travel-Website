@@ -109,6 +109,11 @@
 
         <!-- Google Maps -->
         <section>
+            <form>
+                <label for="desiredPrice">Geben Sie einen Preis ein: </label>
+                <input type="text" id="desiredPrice" name="desiredPrice" placeholder="Preis">
+                <button id="priceBtn">Suchen</button>
+            </form>
             <div id="map"></div>
         </section>
     </article>
@@ -118,7 +123,8 @@
     </footer>
 
     <script src="./static/js/main.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgMxd8mBl1TzIxNjrC98gHrkq4zW-RgSE&callback=initMap">
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgMxd8mBl1TzIxNjrC98gHrkq4zW-RgSE&callback=initMap">
     </script>
 </body>
 

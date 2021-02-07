@@ -72,21 +72,37 @@ window.initMap = () => {
         }
     }
 
-    let coordinates
-    let desiredPrice = 900
-    switch(true) {
-        case (desiredPrice <= 800):
-            coordinates = {lat: -31.054483, lng: 24.168686};
-            break;
-        case (desiredPrice > 800):
-            coordinates = {lat: -4.326026, lng: 122.081875};
-            break;
-    }
-    console.log(coordinates);
+    let desiredPrice = document.getElementById('desiredPrice');
+    const priceBtn = document.getElementById('priceBtn');
 
-    const indonesia = new countryPosition(-4.326026, 122.081875);
-    let map = new google.maps.Map(document.getElementById('map'), {
-        center: coordinates,
-        zoom: 5
-      });
+    let coordinates = new countryPosition(35.009778, 38.459732)
+    let inputtedPrice
+
+    priceBtn.addEventListener('click', e => {
+        e.preventDefault();
+        inputtedPrice = desiredPrice.value
+        mapUpdate();
+    })
+    
+    const mapUpdate = () => {
+        switch(true) {
+            case (inputtedPrice <= 800):
+                coordinates = new countryPosition(-31.054483,  24.168686);
+                break;
+            case (inputtedPrice >= 801):
+                coordinates = new countryPosition(-4.326026, 122.081875);
+                break;
+            default: 
+                coordinates = new countryPosition(35.009778,  38.459732);
+        }
+        mapDisplay()
+    }
+    
+    const mapDisplay = () => {
+        let map = new google.maps.Map(document.getElementById('map'), {
+            center: coordinates,
+            zoom: 5
+          });
+    }
+    mapDisplay()
 }
