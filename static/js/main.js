@@ -62,47 +62,69 @@ prev.addEventListener('click', () => {
 
 
 // Google Maps API 
+
 window.initMap = () => {
     const initMap = () => GoogleMap.initGoogleMap();
 
     class countryPosition {
         constructor(lat, lng) {
-            this.lat = lat; 
+            this.lat = lat;
             this.lng = lng;
         }
     }
+
+    const priceInput = document.getElementById('priceInput');
+    const priceDisplay = document.getElementById('priceDisplay');
 
     let desiredPrice = document.getElementById('desiredPrice');
     const priceBtn = document.getElementById('priceBtn');
 
     let coordinates = new countryPosition(35.009778, 38.459732)
+    let zoomValue = 3
+    
     let inputtedPrice
 
-    priceBtn.addEventListener('click', e => {
-        e.preventDefault();
-        inputtedPrice = desiredPrice.value
+    let priceValue
+    priceDisplay.innerText = priceInput.value + "€"
+    const priceUpdate = () => {
+        priceValue = priceInput.value;
+        priceDisplay.innerText = priceValue + "€";
+        inputtedPrice = priceValue;
         mapUpdate();
-    })
-    
+    }
+
+    priceInput.addEventListener('change', priceUpdate);
+
+
+    // priceBtn.addEventListener('click', e => {
+    //     e.preventDefault();
+    //     priceUpdate() 
+    //     inputtedPrice = priceValue
+    //     mapUpdate();
+    // })
+
     const mapUpdate = () => {
-        switch(true) {
+        switch (true) {
             case (inputtedPrice <= 800):
-                coordinates = new countryPosition(-31.054483,  24.168686);
+                coordinates = new countryPosition(-31.054483, 24.168686);
+                zoomValue = 5;
                 break;
             case (inputtedPrice >= 801):
                 coordinates = new countryPosition(-4.326026, 122.081875);
+                zoomValue = 5;
                 break;
-            default: 
-                coordinates = new countryPosition(35.009778,  38.459732);
+            default:
+                coordinates = new countryPosition(35.009778, 38.459732);
+                zoomValue = 3
         }
         mapDisplay()
     }
-    
+
     const mapDisplay = () => {
         let map = new google.maps.Map(document.getElementById('map'), {
             center: coordinates,
-            zoom: 5
-          });
+            zoom: zoomValue
+        });
     }
     mapDisplay()
 }
