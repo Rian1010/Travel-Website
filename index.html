@@ -19,7 +19,7 @@
                 </div>
                 <form action="./destinations.html" class="search-input" onSubmit=searchQuery()>
                     <input type="text" name="search-query" id="searchQuery" placeholder="Hier suchen">
-                    <input type="submit" value="Suchen">
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                 </form>
             </div>
 
@@ -110,7 +110,7 @@
         <!-- Google Maps -->
         <section class="map-section">
             <div class="heading-2">
-                <h2>Finden Sie Ihr nächstes Reisziel!</h2>
+                <h2>Finden Sie Ihr nächstes Reiseziel!</h2>
 
             </div>
             <form class="flex">
@@ -122,7 +122,7 @@
 
                 <div class="flex map-input-spacing">
                     <p for="desiredPrice">Preis pro Person: </p>
-                    <input type="range" min="10" max="4000" name="priceInput" id="priceInput">
+                    <input type="range" min="30" max="4000" name="priceInput" id="priceInput">
                     <p id="priceDisplay"></p>
                 </div>
                 <!-- <input type="text" id="desiredPrice" name="desiredPrice" placeholder="Preis"> -->

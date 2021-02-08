@@ -120,12 +120,12 @@ window.initMap = () => {
 
     const mapUpdate = () => {
         switch (true) {
-            case (daysValue < 4 && inputtedPrice >= 10 && inputtedPrice <= 500):
+            case (daysValue < 4 && inputtedPrice >= 30 && inputtedPrice <= 500):
                 // Paris
                 coordinates = new countryPosition(48.8566969, 2.3514616);
                 zoomValue = 5;
                 break;
-            case (daysValue >= 4 && inputtedPrice >= 10 && inputtedPrice <= 500):
+            case (daysValue >= 4 && inputtedPrice >= 50 && inputtedPrice <= 500):
                 // Rome
                 coordinates = new countryPosition(41.8933203, 12.4829321);
                 zoomValue = 5;
@@ -150,12 +150,12 @@ window.initMap = () => {
                 coordinates = new countryPosition(51.5073219, -0.1276474);
                 zoomValue = 5;
                 break;
-            case (daysValue < 3 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
+            case (daysValue < 5 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
                 // Maui, Hawaii
                 coordinates = new countryPosition(20.8029568, -156.3106833);
                 zoomValue = 5;
                 break;
-            case (daysValue >= 3 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
+            case (daysValue >= 5 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
                 // Port Louis
                 coordinates = new countryPosition(-20.1637281, 57.5045331);
                 zoomValue = 5;
@@ -171,7 +171,7 @@ window.initMap = () => {
                 zoomValue = 5;
                 break;
             default:
-                alert("Verzeihung! Es wurden keine Ergebnisse gefunden.")
+                alert(`Verzeihung! Es wurde kein ${inputtedPrice}€ Flug für ${daysValue} Tage, gefunden.`)
                 coordinates = new countryPosition(35.009778, 38.459732);
                 zoomValue = 3
         }

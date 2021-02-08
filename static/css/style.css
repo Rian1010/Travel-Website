@@ -45,6 +45,18 @@ body {
     text-decoration: none;
 }
 
+.search-btn {
+    height: 31px;
+    background-color: rgb(3, 3, 3);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#searchQuery {
+    height: 25px;
+}
+
 .navigation-bar-bottom {
     width: 100%;
     height: 50px;
