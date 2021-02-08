@@ -110,8 +110,12 @@
         <!-- Google Maps -->
         <section>
             <form>
-                <label for="desiredPrice">Geben Sie einen Preis ein: </label>
-                <input type="range" min="50" max="10000" name="priceInput" id="priceInput">
+                <label for="numberOfDays">Wählen Sie die Anzahl der gewünschten Tage: </label>
+                <input type="range" min="1" max="7" name="numberOfDays" id="numberOfDays">
+                <p id="dayDisplay"></p>
+
+                <label for="desiredPrice">Wählen Sie einen Preis: </label>
+                <input type="range" min="10" max="4000" name="priceInput" id="priceInput">
                 <p id="priceDisplay"></p>
                 <!-- <input type="text" id="desiredPrice" name="desiredPrice" placeholder="Preis"> -->
                 <!-- <button id="priceBtn">Suchen</button> -->
