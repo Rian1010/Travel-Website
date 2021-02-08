@@ -23,6 +23,8 @@ window.onscroll = () => {
     });
 };
 
+
+
 // Picture Carousel
 
 const picture = document.querySelector('.carousel-pic');
@@ -109,7 +111,6 @@ window.initMap = () => {
 
     priceInput.addEventListener('change', priceUpdate);
 
-
     // priceBtn.addEventListener('click', e => {
     //     e.preventDefault();
     //     priceUpdate() 
@@ -129,14 +130,14 @@ window.initMap = () => {
                 coordinates = new countryPosition(41.8933203, 12.4829321);
                 zoomValue = 5;
                 break;
-            case (daysValue < 4 && inputtedPrice >= 10 && inputtedPrice <= 500):
-                // Sydney
-                coordinates = new countryPosition(-33.8548157, 151.2164539);
+            case (daysValue < 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
+                // Singapore
+                coordinates = new countryPosition(1.357107, 103.8194992);
                 zoomValue = 5;
                 break;
-            case (daysValue >= 4 && inputtedPrice >= 501 && inputtedPrice <= 1000):
-                // Vancouver
-                coordinates = new countryPosition(49.2608724, -123.1139529);
+            case (daysValue >= 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
+                // Seoul
+                coordinates = new countryPosition(37.5666791,126.9782914);
                 zoomValue = 5;
                 break;
             case (daysValue < 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
@@ -144,9 +145,29 @@ window.initMap = () => {
                 coordinates = new countryPosition(-36.852095, 174.7631803);
                 zoomValue = 5;
                 break;
-            case (daysValue >= 4 && inputtedPrice >= 501 && inputtedPrice <= 1000):
-                // Vancouver
-                coordinates = new countryPosition(51.5073219,-0.1276474);
+            case (daysValue >= 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
+                // London
+                coordinates = new countryPosition(51.5073219, -0.1276474);
+                zoomValue = 5;
+                break;
+            case (daysValue < 3 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
+                // Maui, Hawaii
+                coordinates = new countryPosition(20.8029568, -156.3106833);
+                zoomValue = 5;
+                break;
+            case (daysValue >= 3 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
+                // Port Louis
+                coordinates = new countryPosition(-20.1637281, 57.5045331);
+                zoomValue = 5;
+                break;
+            case (daysValue >= 4 && inputtedPrice >= 3001):
+                // Shanghai
+                coordinates = new countryPosition(31.2322758, 121.4692071);
+                zoomValue = 5;
+                break;
+            case (daysValue < 4 && inputtedPrice >= 3001):
+                // Hangzhou, China
+                coordinates = new countryPosition(30.2489634,120.2052342);
                 zoomValue = 5;
                 break;
             default:
