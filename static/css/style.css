@@ -12,9 +12,16 @@ body {
     margin: 0 36px;
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .heading-2 {
+    padding: 10px 0;
     font-size: 24px;
-    ;
     text-align: center;
 }
 
@@ -177,7 +184,6 @@ body {
 /* Destionation */
 .cards-section {
     padding: 20px 0;
-
 }
 
 .destination-card {
@@ -241,6 +247,35 @@ body {
 
 
 /* Map */
+.map-section {
+    color: white;
+    text-align: center;
+    background-color: rgb(24, 24, 24);
+    padding-top: 20px;
+    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-input-spacing {
+    padding: 0 20px
+}
+
 #map {
+    width: 90%;
     height: 70vh;
+}
+
+
+
+/* Footer */
+.footer {
+    color: #fff;
+    background-color: rgb(47, 47, 47);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

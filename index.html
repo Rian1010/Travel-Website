@@ -108,15 +108,23 @@
         </section>
 
         <!-- Google Maps -->
-        <section>
-            <form>
-                <label for="numberOfDays">Wählen Sie die Anzahl der gewünschten Tage: </label>
-                <input type="range" min="1" max="7" name="numberOfDays" id="numberOfDays">
-                <p id="dayDisplay"></p>
+        <section class="map-section">
+            <div class="heading-2">
+                <h2>Finden Sie Ihr nächstes Reisziel!</h2>
 
-                <label for="desiredPrice">Wählen Sie einen Preis: </label>
-                <input type="range" min="10" max="4000" name="priceInput" id="priceInput">
-                <p id="priceDisplay"></p>
+            </div>
+            <form class="flex">
+                <div class="flex map-input-spacing">
+                    <p for="numberOfDays">Anzahl der Tage pro Person: </p>
+                    <input type="range" min="1" max="7" name="numberOfDays" id="numberOfDays">
+                    <p id="dayDisplay"></p>
+                </div>
+
+                <div class="flex map-input-spacing">
+                    <p for="desiredPrice">Preis pro Person: </p>
+                    <input type="range" min="10" max="4000" name="priceInput" id="priceInput">
+                    <p id="priceDisplay"></p>
+                </div>
                 <!-- <input type="text" id="desiredPrice" name="desiredPrice" placeholder="Preis"> -->
                 <!-- <button id="priceBtn">Suchen</button> -->
             </form>
@@ -124,8 +132,8 @@
         </section>
     </article>
 
-    <footer>
-
+    <footer class="footer">
+        <h2>Footer</h2>
     </footer>
 
     <script src="./static/js/main.js"></script>
