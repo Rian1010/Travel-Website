@@ -127,14 +127,14 @@ window.initMap = () => {
             place: "Paris",
             days: 1,
             price: 35,
-            lat: 48.8566969, 
+            lat: 48.8566969,
             lng: 2.3514616
         },
         {
             place: "Paris",
             days: 3,
             price: 60,
-            lat: 48.8566969, 
+            lat: 48.8566969,
             lng: 2.3514616
         },
         {
@@ -149,7 +149,7 @@ window.initMap = () => {
             days: 3,
             price: 1230,
             lat: 51.5073219,
-            lng:-0.1276474
+            lng: -0.1276474
         },
         {
             place: "Hangzhou",
@@ -168,7 +168,7 @@ window.initMap = () => {
         let currentPlace;
         let currentLat;
         let currentLng;
-        
+
         while (idxTwo < countries.length) {
             console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
@@ -176,7 +176,7 @@ window.initMap = () => {
 
             let firstPlacePrice = countries[idxOne].price;
             let secondPlacePrice = countries[idxTwo].price;
-            
+
             if (Math.abs(firstPlacePrice - userPrice) < Math.abs(secondPlacePrice - userPrice) && Math.abs(firstPlaceDay - userDays) < Math.abs(secondPlaceDay - userDays) && firstPlaceDay <= userDays && firstPlacePrice <= userPrice) {
                 currentPrice = firstPlacePrice;
                 currentDay = firstPlaceDay;
@@ -267,7 +267,7 @@ window.initMap = () => {
     //             coordinates = new countryPosition(35.009778, 38.459732);
     //             zoomValue = 3
     //     }
-        // mapDisplay()
+    // mapDisplay()
     // }
 
 }
