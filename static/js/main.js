@@ -87,7 +87,7 @@ window.initMap = () => {
     let coordinates = new countryPosition(35.009778, 38.459732)
     let zoomValue = 3
 
-    let daysValue = 4;
+    let daysValue = 7;
     daysDisplay.innerText = daysInput.value;
 
     const daysUpdate = () => {
@@ -98,7 +98,7 @@ window.initMap = () => {
 
     daysInput.addEventListener('change', daysUpdate);
 
-    let inputtedPrice = 2015;
+    let inputtedPrice = 200;
     let priceValue;
     priceDisplay.innerText = priceInput.value + "€";
 
@@ -140,7 +140,7 @@ window.initMap = () => {
             lng: 12.4829321
         },
         {
-            place: "Rome",
+            place: "London",
             days: 3,
             price: 1230,
             lat: 51.5073219,
@@ -155,15 +155,17 @@ window.initMap = () => {
         }
     ]
 
-    let inpDay = 6;
+    let inpDay = 7;
     let inpPrice = 69;
 
-    const findClosestValues = (price, days) => {
+    const findClosestValues = (userPrice, userDays) => {
         let idxOne = 0;
         let idxTwo = 1;
         let currentPrice = 2015;
         let currentDay = 4;
-        let currentPlace
+        let currentPlace;
+        let currentLat;
+        let currentLng;
         while (idxTwo < countries.length) {
             console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
@@ -173,29 +175,33 @@ window.initMap = () => {
             let secondPlacePrice = countries[idxTwo].price;
             
             // console.log(Math.abs(firstPlace - inpPrice));
-            if (Math.abs(firstPlacePrice - price) < Math.abs(secondPlacePrice - price) && Math.abs(firstPlaceDay - days) < Math.abs(secondPlaceDay - days) && firstPlaceDay >= days && firstPlacePrice >= price) {
+            if (Math.abs(firstPlacePrice - userPrice) < Math.abs(secondPlacePrice - userPrice) && Math.abs(firstPlaceDay - userDays) < Math.abs(secondPlaceDay - userDays) && firstPlaceDay <= userDays && firstPlacePrice <= userPrice) {
                 currentPrice = firstPlacePrice;
                 currentDay = firstPlaceDay;
-                currentPlace = countries[idxOne].place
+                currentPlace = countries[idxOne].place;
+                currentLat = countries[idxOne].lat;
+                currentLng = countries[idxOne].lng;
+
                 console.log(currentPrice, currentDay, currentPlace);
                 idxOne++;
-            } else if (Math.abs(secondPlacePrice - price) < Math.abs(firstPlacePrice - price) && Math.abs(secondPlaceDay - days) < Math.abs(firstPlaceDay - days && firstPlaceDay >= days && firstPlacePrice >= price)) {
+            } else if (Math.abs(secondPlacePrice - userPrice) < Math.abs(firstPlacePrice - userPrice) && Math.abs(secondPlaceDay - userDays) < Math.abs(firstPlaceDay - userDays && firstPlaceDay <= userDays && firstPlacePrice <= userPrice)) {
                 currentPrice = secondPlacePrice;
                 currentDay = secondPlaceDay;
                 currentPlace = countries[idxTwo].place;
+                currentLat = countries[idxOne].lat;
+                currentLng = countries[idxOne].lng;
 
                 console.log(currentPrice, currentDay, currentPlace)
                 idxTwo++;
-            }
-            else {
+            } else {
                 idxOne++;
                 idxTwo++;
                 console.log("nothing found")
             }
         }
-        console.log("kk " + currentPrice, currentDay, currentPlace);
+        console.log("kk " + currentPrice, currentDay, currentPlace, currentLat, currentLng);
     }
-    findClosestValues(inpPrice, inpDay)
+    findClosestValues(inputtedPrice, daysValue)
 
     const mapUpdate = () => {
         switch (true) {
