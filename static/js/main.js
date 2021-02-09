@@ -98,7 +98,7 @@ window.initMap = () => {
 
     daysInput.addEventListener('change', daysUpdate);
 
-    let inputtedPrice = 2005;
+    let inputtedPrice = 2015;
     let priceValue;
     priceDisplay.innerText = priceInput.value + "€";
 
@@ -117,6 +117,85 @@ window.initMap = () => {
     //     inputtedPrice = priceValue
     //     mapUpdate();
     // })
+
+    const countries = [{
+            place: "Paris",
+            days: 1,
+            price: 35,
+            lat: 48.8566969, 
+            lng: 2.3514616
+        },
+        {
+            place: "Paris",
+            days: 3,
+            price: 60,
+            lat: 48.8566969, 
+            lng: 2.3514616
+        },
+        {
+            place: "Rome",
+            days: 6,
+            price: 70,
+            lat: 41.8933203,
+            lng: 12.4829321
+        },
+        {
+            place: "Rome",
+            days: 3,
+            price: 1230,
+            lat: 51.5073219,
+            lng:-0.1276474
+        },
+        {
+            place: "Hangzhou",
+            days: 5,
+            price: 3500,
+            lat: 30.2489634,
+            lng: 120.2052342
+        }
+    ]
+
+    let inpDay = 6;
+    let inpPrice = 69;
+
+    const findClosestValues = (price, days) => {
+        let idxOne = 0;
+        let idxTwo = 1;
+        let currentPrice = 2015;
+        let currentDay = 4;
+        let currentPlace
+        while (idxTwo < countries.length) {
+            console.log(idxOne, idxTwo, countries.length)
+            let firstPlaceDay = countries[idxOne].days;
+            let secondPlaceDay = countries[idxTwo].days;
+
+            let firstPlacePrice = countries[idxOne].price;
+            let secondPlacePrice = countries[idxTwo].price;
+            
+            // console.log(Math.abs(firstPlace - inpPrice));
+            if (Math.abs(firstPlacePrice - price) < Math.abs(secondPlacePrice - price) && Math.abs(firstPlaceDay - days) < Math.abs(secondPlaceDay - days) && firstPlaceDay >= days && firstPlacePrice >= price) {
+                currentPrice = firstPlacePrice;
+                currentDay = firstPlaceDay;
+                currentPlace = countries[idxOne].place
+                console.log(currentPrice, currentDay, currentPlace);
+                idxOne++;
+            } else if (Math.abs(secondPlacePrice - price) < Math.abs(firstPlacePrice - price) && Math.abs(secondPlaceDay - days) < Math.abs(firstPlaceDay - days && firstPlaceDay >= days && firstPlacePrice >= price)) {
+                currentPrice = secondPlacePrice;
+                currentDay = secondPlaceDay;
+                currentPlace = countries[idxTwo].place;
+
+                console.log(currentPrice, currentDay, currentPlace)
+                idxTwo++;
+            }
+            else {
+                idxOne++;
+                idxTwo++;
+                console.log("nothing found")
+            }
+        }
+        console.log("kk " + currentPrice, currentDay, currentPlace);
+    }
+    findClosestValues(inpPrice, inpDay)
 
     const mapUpdate = () => {
         switch (true) {
@@ -137,7 +216,7 @@ window.initMap = () => {
                 break;
             case (daysValue >= 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
                 // Seoul
-                coordinates = new countryPosition(37.5666791,126.9782914);
+                coordinates = new countryPosition(37.5666791, 126.9782914);
                 zoomValue = 5;
                 break;
             case (daysValue < 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
@@ -167,7 +246,7 @@ window.initMap = () => {
                 break;
             case (daysValue < 4 && inputtedPrice >= 3001):
                 // Hangzhou, China
-                coordinates = new countryPosition(30.2489634,120.2052342);
+                coordinates = new countryPosition(30.2489634, 120.2052342);
                 zoomValue = 5;
                 break;
             default:
