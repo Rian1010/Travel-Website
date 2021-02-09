@@ -17,21 +17,22 @@
                 <div class="nav-brand">
                     <h1><a class="nav-brand-link" href="/">Travello</a></h1>
                 </div>
-                <form action="./destinations.html" class="search-input" onSubmit=searchQuery()>
-                    <input type="text" name="search-query" id="searchQuery" placeholder="Hier suchen">
+                <form action="./destinations.html" onSubmit=searchQuery()>
+                    <input type="text" name="search-query" id="searchQuery" class="search-query"
+                        placeholder="Hier suchen">
                     <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                 </form>
             </div>
 
             <div class="navigation-bar-bottom">
                 <div class="nav-item">
-                    <a class="nav-links" href="#">Startseite</a>
+                    <a class="nav-links" href="/">Startseite</a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-links" href="./destinations.html">Reiseziele</a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-links" href="#">Kontakt</a>
+                    <a class="nav-links" href="#">Hotels</a>
                 </div>
             </div>
         </nav>
@@ -133,9 +134,16 @@
 
         <!-- Search Section -->
         <section>
-            <div class="container">
-                <div class="heading-2">
-                    <h2>Suchen Sie Nach Weiteren Informationen Über Orte!</h2>
+            <div class="search-banner search-bg">
+                <div class="container">
+                    <div class="heading-2-search">
+                        <h2>Suchen Sie Nach Weiteren Informationen Über Orte!</h2>
+                    </div>
+                    <form action="./destinations.html" class="search-input" onSubmit=searchQuery()>
+                        <input type="text" name="search-query-big" id="searchQueryBig"
+                            class="search-query search-query-big" placeholder="Hier suchen">
+                        <button type="submit" class="search-btn-big"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
             </div>
         </section>

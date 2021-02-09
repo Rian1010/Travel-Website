@@ -45,6 +45,12 @@ body {
     text-decoration: none;
 }
 
+.search-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .search-btn {
     height: 31px;
     background-color: rgb(3, 3, 3);
@@ -52,8 +58,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
-#searchQuery {
+.search-query {
     height: 25px;
 }
 
@@ -278,6 +283,45 @@ body {
 #map {
     width: 90%;
     height: 70vh;
+}
+
+
+
+/* Search Section */
+.heading-2-search {
+    font-size: 24px;
+    text-align: center;
+}
+
+.search-bg {
+    height: 60vh;
+    color: #fff;
+    /* https://pixabay.com/photos/beach-sun-evening-summer-sea-2836300/ */
+    background-image: url('../images/Beach.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-query-big {
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 18px;
+}
+
+.search-btn-big {
+    width: 45px;
+    height: 43px;
+    background-color: rgb(3, 3, 3);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 
