@@ -75,15 +75,6 @@ window.initMap = () => {
         }
     }
 
-    const daysInput = document.getElementById('numberOfDays');
-    const daysDisplay = document.getElementById('dayDisplay');
-
-    const priceInput = document.getElementById('priceInput');
-    const priceDisplay = document.getElementById('priceDisplay');
-
-    // let desiredPrice = document.getElementById('desiredPrice');
-    // const priceBtn = document.getElementById('priceBtn');
-
     let coordinates = new countryPosition(35.009778, 38.459732);
     let zoomValue = 3;
 
@@ -94,6 +85,12 @@ window.initMap = () => {
         });
     }
     mapDisplay()
+
+    const daysInput = document.getElementById('numberOfDays');
+    const daysDisplay = document.getElementById('dayDisplay');
+
+    const priceInput = document.getElementById('priceInput');
+    const priceDisplay = document.getElementById('priceDisplay');
 
     let daysValue = 7;
     daysDisplay.innerText = daysInput.value;
@@ -163,9 +160,6 @@ window.initMap = () => {
         }
     ]
 
-    let inpDay = 7;
-    let inpPrice = 69;
-
     const findClosestValues = (userPrice, userDays) => {
         let idxOne = 0;
         let idxTwo = 1;
@@ -174,6 +168,7 @@ window.initMap = () => {
         let currentPlace;
         let currentLat;
         let currentLng;
+
         while (idxTwo < countries.length) {
             console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
@@ -182,7 +177,6 @@ window.initMap = () => {
             let firstPlacePrice = countries[idxOne].price;
             let secondPlacePrice = countries[idxTwo].price;
             
-            // console.log(Math.abs(firstPlace - inpPrice));
             if (Math.abs(firstPlacePrice - userPrice) < Math.abs(secondPlacePrice - userPrice) && Math.abs(firstPlaceDay - userDays) < Math.abs(secondPlaceDay - userDays) && firstPlaceDay <= userDays && firstPlacePrice <= userPrice) {
                 currentPrice = firstPlacePrice;
                 currentDay = firstPlaceDay;
@@ -208,6 +202,8 @@ window.initMap = () => {
             } else {
                 idxOne++;
                 idxTwo++;
+                coordinates = new countryPosition(35.009778, 38.459732);
+                zoomValue = 3;
                 console.log("nothing found")
             }
         }
