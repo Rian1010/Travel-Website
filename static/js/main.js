@@ -198,11 +198,8 @@ window.initMap = () => {
                 currentPrice = secondPlacePrice;
                 currentDay = secondPlaceDay;
                 currentPlace = countries[idxTwo].place;
-                if (currentPrice > secondPlacePrice) {
-
-                }
-                currentLat = countries[idxOne].lat;
-                currentLng = countries[idxOne].lng;
+                currentLat = countries[idxTwo].lat;
+                currentLng = countries[idxTwo].lng;
                 coordinates = new countryPosition(currentLat, currentLng);
                 zoomValue = 5;
 
@@ -219,64 +216,64 @@ window.initMap = () => {
     }
     findClosestValues()
 
-    const mapUpdate = () => {
-        switch (true) {
-            case (daysValue < 4 && inputtedPrice >= 30 && inputtedPrice <= 500):
-                // Paris
-                coordinates = new countryPosition(48.8566969, 2.3514616);
-                zoomValue = 5;
-                break;
-            case (daysValue >= 4 && inputtedPrice >= 50 && inputtedPrice <= 500):
-                // Rome
-                coordinates = new countryPosition(41.8933203, 12.4829321);
-                zoomValue = 5;
-                break;
-            case (daysValue < 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
-                // Singapore
-                coordinates = new countryPosition(1.357107, 103.8194992);
-                zoomValue = 5;
-                break;
-            case (daysValue >= 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
-                // Seoul
-                coordinates = new countryPosition(37.5666791, 126.9782914);
-                zoomValue = 5;
-                break;
-            case (daysValue < 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
-                // Auckland, New Zealand
-                coordinates = new countryPosition(-36.852095, 174.7631803);
-                zoomValue = 5;
-                break;
-            case (daysValue >= 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
-                // London
-                coordinates = new countryPosition(51.5073219, -0.1276474);
-                zoomValue = 5;
-                break;
-            case (daysValue < 5 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
-                // Maui, Hawaii
-                coordinates = new countryPosition(20.8029568, -156.3106833);
-                zoomValue = 5;
-                break;
-            case (daysValue >= 5 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
-                // Port Louis
-                coordinates = new countryPosition(-20.1637281, 57.5045331);
-                zoomValue = 5;
-                break;
-            case (daysValue >= 4 && inputtedPrice >= 3001):
-                // Shanghai
-                coordinates = new countryPosition(31.2322758, 121.4692071);
-                zoomValue = 5;
-                break;
-            case (daysValue < 4 && inputtedPrice >= 3001):
-                // Hangzhou, China
-                coordinates = new countryPosition(30.2489634, 120.2052342);
-                zoomValue = 5;
-                break;
-            default:
-                alert(`Verzeihung! Es wurde kein ${inputtedPrice}€ Flug für ${daysValue} Tage, gefunden.`)
-                coordinates = new countryPosition(35.009778, 38.459732);
-                zoomValue = 3
-        }
+    // const mapUpdate = () => {
+    //     switch (true) {
+    //         case (daysValue < 4 && inputtedPrice >= 30 && inputtedPrice <= 500):
+    //             // Paris
+    //             coordinates = new countryPosition(48.8566969, 2.3514616);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue >= 4 && inputtedPrice >= 50 && inputtedPrice <= 500):
+    //             // Rome
+    //             coordinates = new countryPosition(41.8933203, 12.4829321);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue < 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
+    //             // Singapore
+    //             coordinates = new countryPosition(1.357107, 103.8194992);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue >= 3 && inputtedPrice >= 501 && inputtedPrice <= 1000):
+    //             // Seoul
+    //             coordinates = new countryPosition(37.5666791, 126.9782914);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue < 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
+    //             // Auckland, New Zealand
+    //             coordinates = new countryPosition(-36.852095, 174.7631803);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue >= 4 && inputtedPrice >= 1001 && inputtedPrice <= 2000):
+    //             // London
+    //             coordinates = new countryPosition(51.5073219, -0.1276474);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue < 5 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
+    //             // Maui, Hawaii
+    //             coordinates = new countryPosition(20.8029568, -156.3106833);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue >= 5 && inputtedPrice >= 2001 && inputtedPrice <= 3000):
+    //             // Port Louis
+    //             coordinates = new countryPosition(-20.1637281, 57.5045331);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue >= 4 && inputtedPrice >= 3001):
+    //             // Shanghai
+    //             coordinates = new countryPosition(31.2322758, 121.4692071);
+    //             zoomValue = 5;
+    //             break;
+    //         case (daysValue < 4 && inputtedPrice >= 3001):
+    //             // Hangzhou, China
+    //             coordinates = new countryPosition(30.2489634, 120.2052342);
+    //             zoomValue = 5;
+    //             break;
+    //         default:
+    //             alert(`Verzeihung! Es wurde kein ${inputtedPrice}€ Flug für ${daysValue} Tage, gefunden.`)
+    //             coordinates = new countryPosition(35.009778, 38.459732);
+    //             zoomValue = 3
+    //     }
         // mapDisplay()
-    }
+    // }
 
 }
