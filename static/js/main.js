@@ -84,8 +84,16 @@ window.initMap = () => {
     // let desiredPrice = document.getElementById('desiredPrice');
     // const priceBtn = document.getElementById('priceBtn');
 
-    let coordinates = new countryPosition(35.009778, 38.459732)
-    let zoomValue = 3
+    let coordinates = new countryPosition(35.009778, 38.459732);
+    let zoomValue = 3;
+
+    const mapDisplay = () => {
+        let map = new google.maps.Map(document.getElementById('map'), {
+            center: coordinates,
+            zoom: zoomValue
+        });
+    }
+    mapDisplay()
 
     let daysValue = 7;
     daysDisplay.innerText = daysInput.value;
@@ -93,7 +101,7 @@ window.initMap = () => {
     const daysUpdate = () => {
         daysValue = daysInput.value;
         daysDisplay.innerText = daysValue;
-        mapUpdate();
+        findClosestValues(inputtedPrice, daysValue);
     }
 
     daysInput.addEventListener('change', daysUpdate);
@@ -106,7 +114,7 @@ window.initMap = () => {
         priceValue = priceInput.value;
         priceDisplay.innerText = priceValue + "€";
         inputtedPrice = priceValue;
-        mapUpdate();
+        findClosestValues(inputtedPrice, daysValue);
     }
 
     priceInput.addEventListener('change', priceUpdate);
@@ -181,15 +189,22 @@ window.initMap = () => {
                 currentPlace = countries[idxOne].place;
                 currentLat = countries[idxOne].lat;
                 currentLng = countries[idxOne].lng;
+                coordinates = new countryPosition(currentLat, currentLng)
+                zoomValue = 5;
 
                 console.log(currentPrice, currentDay, currentPlace);
                 idxOne++;
-            } else if (Math.abs(secondPlacePrice - userPrice) < Math.abs(firstPlacePrice - userPrice) && Math.abs(secondPlaceDay - userDays) < Math.abs(firstPlaceDay - userDays && firstPlaceDay <= userDays && firstPlacePrice <= userPrice)) {
+            } else if (Math.abs(secondPlacePrice - userPrice) < Math.abs(firstPlacePrice - userPrice) && Math.abs(secondPlaceDay - userDays) < Math.abs(firstPlaceDay - userDays) && secondPlaceDay <= userDays && secondPlacePrice <= userPrice) {
                 currentPrice = secondPlacePrice;
                 currentDay = secondPlaceDay;
                 currentPlace = countries[idxTwo].place;
+                if (currentPrice > secondPlacePrice) {
+
+                }
                 currentLat = countries[idxOne].lat;
                 currentLng = countries[idxOne].lng;
+                coordinates = new countryPosition(currentLat, currentLng);
+                zoomValue = 5;
 
                 console.log(currentPrice, currentDay, currentPlace)
                 idxTwo++;
@@ -200,8 +215,9 @@ window.initMap = () => {
             }
         }
         console.log("kk " + currentPrice, currentDay, currentPlace, currentLat, currentLng);
+        mapDisplay()
     }
-    findClosestValues(inputtedPrice, daysValue)
+    findClosestValues()
 
     const mapUpdate = () => {
         switch (true) {
@@ -260,14 +276,7 @@ window.initMap = () => {
                 coordinates = new countryPosition(35.009778, 38.459732);
                 zoomValue = 3
         }
-        mapDisplay()
+        // mapDisplay()
     }
 
-    const mapDisplay = () => {
-        let map = new google.maps.Map(document.getElementById('map'), {
-            center: coordinates,
-            zoom: zoomValue
-        });
-    }
-    mapDisplay()
 }
