@@ -75,6 +75,12 @@ window.initMap = () => {
         }
     }
 
+    const daysInput = document.getElementById('numberOfDays');
+    const daysDisplay = document.getElementById('dayDisplay');
+
+    const priceInput = document.getElementById('priceInput');
+    const priceDisplay = document.getElementById('priceDisplay');
+
     let coordinates = new countryPosition(35.009778, 38.459732);
     let zoomValue = 3;
 
@@ -85,12 +91,6 @@ window.initMap = () => {
         });
     }
     mapDisplay()
-
-    const daysInput = document.getElementById('numberOfDays');
-    const daysDisplay = document.getElementById('dayDisplay');
-
-    const priceInput = document.getElementById('priceInput');
-    const priceDisplay = document.getElementById('priceDisplay');
 
     let daysValue = 7;
     daysDisplay.innerText = daysInput.value;
@@ -168,7 +168,7 @@ window.initMap = () => {
         let currentPlace;
         let currentLat;
         let currentLng;
-
+        
         while (idxTwo < countries.length) {
             console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
@@ -202,8 +202,6 @@ window.initMap = () => {
             } else {
                 idxOne++;
                 idxTwo++;
-                coordinates = new countryPosition(35.009778, 38.459732);
-                zoomValue = 3;
                 console.log("nothing found")
             }
         }
