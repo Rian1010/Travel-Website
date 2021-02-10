@@ -153,7 +153,7 @@ window.initMap = () => {
             price: 59.99,
             lat: 48.8566969,
             lng: 2.3514616,
-            info: "Ein Tag für 35,00€ und drei Tage für 59,99€"
+            info: "Ein Tag für 35,00€ und Drei Tage für 59,99€"
         },
         {
             place: "Rom, Italien",
@@ -251,7 +251,6 @@ window.initMap = () => {
         });
 
         function addMarker(props) {
-            console.log(props.content.place)
             let marker = new google.maps.Marker({
                 position: props.coords,
                 map,
@@ -275,9 +274,6 @@ window.initMap = () => {
             })
         }
 
-        marker.addListener("click", () => {
-            infowindow.open(map, marker);
-        });
     }
     findClosestValues()
 
