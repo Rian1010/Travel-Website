@@ -178,7 +178,71 @@ window.initMap = () => {
             lat: 30.2489634,
             lng: 120.2052342,
             info: "Fünf Tage für 3500,00€"
-        }
+        },
+        {
+            place: "Singapore",
+            days: 6,
+            price: 763.67,
+            lat: 1.357107, 
+            lng: 103.8194992,
+            info: "Vier Tage für 547,80€ sechs Tage für 763,67€"
+        },
+        {
+            place: "Singapur",
+            days: 4,
+            price: 547.80,
+            lat: 1.357107, 
+            lng: 103.8194992,
+            info: "Vier Tage für 547,80€ sechs Tage für 763,67€"
+        },
+        {
+            place: "Seoul, Südkorea",
+            days: 3,
+            price: 829.87,
+            lat: 37.5666791, 
+            lng: 126.9782914,
+            info: "Zwei Tage für 583, 89 und vier Tage für 829,87€"
+        },
+        {
+            place: "Seoul, Südkorea",
+            days: 2,
+            price: 583.89,
+            lat: 37.5666791, 
+            lng: 126.9782914,
+            info: "Zwei Tage für 583, 89 und vier Tage für 829,87€"
+        },
+        {
+            place: "Auckland, Neu Zeeland",
+            days: 4,
+            price: 1570.68,
+            lat: -36.852095, 
+            lng: 174.7631803,
+            info: "Vier Tage für 1570,68€"
+        },
+        {
+            place: "Port Louis, Mauritius",
+            days: 4,
+            price: 2635.93,
+            lat: -20.1637281,
+            lng:  57.5045331,
+            info: "Vier Tage für 2635,93 und sieben Tage für 3835,93€"
+        },
+        {
+            place: "Port Louis, Mauritius",
+            days: 7,
+            price: 3835.93,
+            lat: -20.1637281,
+            lng:  57.5045331,
+            info: "Vier Tage für 2635,93 und sieben Tage für 3835,93€"
+        },
+        {
+            place: "Shanghai, China",
+            days: 4,
+            price: 3219.29,
+            lat: 31.2322758, 
+            lng: 121.4692071 ,
+            info: "Vier Tage für 3219,29"
+        },
     ]
 
     // Find the closest result for user input
@@ -239,7 +303,7 @@ window.initMap = () => {
             results.style.color = "red"
         } else {
             resultsHeading.style.display = 'inline';
-            results.innerText = `Ort: ${currentPlace}, Tage: ${currentDay}, Preis: ${currentPrice}€`;
+            results.innerHTML = `<b>Ort</b>: ${currentPlace}, <b>Tage</b>: ${currentDay}, Preis: ${currentPrice}€`;
             results.style.color = "white"
         }
         // mapDisplay()
