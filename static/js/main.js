@@ -82,13 +82,18 @@ window.initMap = () => {
     let coordinates = new countryPosition(35.009778, 38.459732);
     let zoomValue = 3;
 
+    // Display the map
     const mapDisplay = () => {
         let map = new google.maps.Map(document.getElementById('map'), {
             center: coordinates,
-            zoom: zoomValue
+            zoom: zoomValue,
+            gestureHandling: "cooperative",
         });
     }
     mapDisplay()
+
+    
+    // Update days on days input change
 
     let daysValue = 7;
     daysDisplay.innerText = daysInput.value;
@@ -100,6 +105,8 @@ window.initMap = () => {
     }
 
     daysInput.addEventListener('change', daysUpdate);
+
+    // Update price on price input change
 
     let inputtedPrice = 200;
     let priceValue;
@@ -120,6 +127,8 @@ window.initMap = () => {
     //     inputtedPrice = priceValue
     //     mapUpdate();
     // })
+
+    // List of all available places
 
     const countries = [{
             place: "Paris",
@@ -158,6 +167,8 @@ window.initMap = () => {
         }
     ]
 
+    // Find the closest result for user input
+    
     const results = document.getElementById('results');
     const resultsHeading = document.getElementById('resultsHeading')
 
