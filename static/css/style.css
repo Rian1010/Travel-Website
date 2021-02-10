@@ -58,6 +58,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .search-query {
     height: 25px;
 }
@@ -154,7 +155,9 @@ body {
 }
 
 .banner-title {
+    width: 50%;
     color: #fff;
+    text-align: center;
     font-size: 50px;
 }
 
@@ -198,27 +201,49 @@ body {
     font-size: 70px;
 }
 
+
+
 /* Destionation */
+
 .cards-section {
     padding: 20px 0;
 }
 
 .destination-card {
-    max-width: 416px;
+    max-width: 550px;
+    min-width: 295px;
     margin: 20px 20px;
     border: solid 1px #333;
 }
 
-.cards {
+/* .cards {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto;
     grid-row: auto auto auto;
 }
 
+@media screen and (min-width: 568px) {
+    .cards {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cards {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+} */
+
 .cards-home {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    place-items: center;
+
+    /* display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; */
 }
 
 .card-padding {

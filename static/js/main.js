@@ -34,18 +34,24 @@ const banner = document.querySelector('.banner');
 
 let index = 0
 const images = ['./static/images/Banner.jpg', './static/images/Singapore.jpg', './static/images/Indonesia.jpg'];
+const imageTexts = ['Wo fängt Ihre Die Nächste Reise an?', 'Finden Sie Mehr Über Interessante Kultur Heraus!', 'Besuchen Sie Die Schönsten Orte Der Welt!']
 banner.style.backgroundImage = `url('${images[index]}')`
+banner_title.innerText = `${imageTexts[index]}`
 
 next.addEventListener('click', () => {
     banner.style.opacity = 0
+    banner_title.style.opacity = 0;
     index++;
     if (index >= 3) {
         index = 0;
     }
     banner.style.transition = '0.3s';
-    banner.style.backgroundImage = `url('${images[index]}')`
-    banner.style.opacity = 1
+    banner_title.style.transition = "0.3s"
 
+    banner.style.backgroundImage = `url('${images[index]}')`
+    banner_title.innerText = `${imageTexts[index]}`
+    banner.style.opacity = 1
+    banner_title.style.opacity = 1;
     console.log(index)
 });
 
@@ -227,6 +233,15 @@ window.initMap = () => {
             }
         }
         console.log(currentPrice, currentDay, currentPlace, currentLat, currentLng);
+        if (currentPlace === undefined) {
+            resultsHeading.style.display = 'none';
+            results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
+            results.style.color = "red"
+        } else {
+            resultsHeading.style.display = 'inline';
+            results.innerText = `Ort: ${currentPlace}, Tage: ${currentDay}, Preis: ${currentPrice}€`;
+            results.style.color = "white"
+        }
         // mapDisplay()
         let map;
         map = new google.maps.Map(document.getElementById('map'), {
@@ -263,16 +278,6 @@ window.initMap = () => {
         marker.addListener("click", () => {
             infowindow.open(map, marker);
         });
-
-        if (currentPlace === undefined) {
-            resultsHeading.style.display = 'none';
-            results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
-            results.style.color = "red"
-        } else {
-            resultsHeading.style.display = 'inline';
-            results.innerText = `Ort: ${currentPlace}, Tage: ${currentDay}, Preis: ${currentPrice}€`;
-            results.style.color = "white"
-        }
     }
     findClosestValues()
 
