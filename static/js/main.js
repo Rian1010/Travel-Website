@@ -13,13 +13,11 @@ window.onscroll = () => {
         e.style.transform = `translateY(${scroll * -speed}px)`;
         banner_title.style.opacity = -scroll / (banner_title.offsetHeight) + 4
 
-        arrow_right.style.transform = `translateX(${scroll * speed}px)`;
+        arrow_right.style.transform = `translateY(${scroll * -speed}px)`;
         arrow_right.style.opacity = -scroll / (banner_title.offsetHeight) + 4
 
-        arrow_left.style.transform = `translateX(${scroll * -speed}px)`;
+        arrow_left.style.transform = `translateY(${scroll * -speed}px)`;
         arrow_left.style.opacity = -scroll / (banner_title.offsetHeight) + 4
-
-        banner.style.transition = '0s';
     });
 };
 
@@ -216,10 +214,12 @@ window.initMap = () => {
         if (currentPlace === undefined) {
             resultsHeading.style.display = 'none';
             results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
+            results.style.color = "red"
         }
         else {
             resultsHeading.style.display = 'inline';
             results.innerText = `Ort: ${currentPlace}, Tage: ${currentDay}, Preis: ${currentPrice}`;
+            results.style.color = "white"
         }
     }
     findClosestValues()
