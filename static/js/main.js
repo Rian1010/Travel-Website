@@ -190,8 +190,6 @@ window.initMap = () => {
         let currentLat = 35.009778;
         let currentLng = 38.459732;
 
-
-
         while (idxTwo < countries.length) {
             console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
@@ -235,25 +233,6 @@ window.initMap = () => {
             center: coordinates,
             zoom: zoomValue,
             gestureHandling: "cooperative",
-        });
-
-        const contentString =
-            '<div id="content">' +
-            '<div id="siteNotice">' +
-            "</div>" +
-            `<h1 id="firstHeading" class="firstHeading">${countries[1].place}</h1>` +
-            '<div id="bodyContent">' +
-            "</div>" +
-            "</div>";
-        console.log(contentString)
-
-        let marker = new google.maps.Marker({
-            position: {
-                lat: 48.8566969,
-                lng: 2.3514616
-            },
-            map,
-            title: "Paris",
         });
 
         function addMarker(props) {
