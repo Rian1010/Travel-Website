@@ -133,39 +133,45 @@ window.initMap = () => {
     // List of all available places
 
     const countries = [{
-            place: "Paris",
+            place: "Paris, Frankreich",
             days: 1,
-            price: 35,
+            price: 35.00,
             lat: 48.8566969,
-            lng: 2.3514616
+            lng: 2.3514616,
+            info: "Ein Tag für 35,00€ und drei Tage für 59,99€"
+
         },
         {
-            place: "Paris",
+            place: "Paris, Frankreich",
             days: 3,
             price: 59.99,
             lat: 48.8566969,
-            lng: 2.3514616
+            lng: 2.3514616,
+            info: "Ein Tag für 35,00€ und drei Tage für 59,99€"
         },
         {
-            place: "Rom",
+            place: "Rom, Italien",
             days: 6,
-            price: 70,
+            price: 70.00,
             lat: 41.8933203,
-            lng: 12.4829321
+            lng: 12.4829321,
+            info: "Sechs Tage für 70,00€"
         },
         {
-            place: "London",
+            place: "London, England",
             days: 3,
-            price: 1230,
+            price: 1229.99,
             lat: 51.5073219,
-            lng: -0.1276474
+            lng: -0.1276474,
+            info: "Drei Tage für 1229,99€"
         },
         {
-            place: "Hangzhou",
+            place: "Hangzhou, China",
             days: 5,
-            price: 3500,
+            price: 3500.00,
             lat: 30.2489634,
-            lng: 120.2052342
+            lng: 120.2052342,
+            info: "Fünf Tage für 3500,00€"
         }
     ]
 
@@ -235,26 +241,12 @@ window.initMap = () => {
             '<div id="content">' +
             '<div id="siteNotice">' +
             "</div>" +
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+            `<h1 id="firstHeading" class="firstHeading">${countries[1].place}</h1>` +
             '<div id="bodyContent">' +
-            "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-            "sandstone rock formation in the southern part of the " +
-            "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-            "south west of the nearest large town, Alice Springs; 450&#160;km " +
-            "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-            "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-            "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-            "Aboriginal people of the area. It has many springs, waterholes, " +
-            "rock caves and ancient paintings. Uluru is listed as a World " +
-            "Heritage Site.</p>" +
-            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-            "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-            "(last visited June 22, 2009).</p>" +
             "</div>" +
             "</div>";
-        const infowindow = new google.maps.InfoWindow({
-            content: contentString,
-        });
+        console.log(contentString)
+
         let marker = new google.maps.Marker({
             position: {
                 lat: 48.8566969,
@@ -264,20 +256,28 @@ window.initMap = () => {
             title: "Paris",
         });
 
-        function addMarker(coords) {
+        function addMarker(props) {
+            console.log(props.content.place)
             let marker = new google.maps.Marker({
-                position: coords,
+                position: props.coords,
                 map,
-                title: "Paris",
+            });
+            const infowindow = new google.maps.InfoWindow({
+                content: props.content.place,
             });
             marker.addListener("click", () => {
                 infowindow.open(map, marker);
             });
         }
-        for (let i=0; i < countries.length; i++) {
+        for (let i = 0; i < countries.length; i++) {
             addMarker({
-                lat: countries[i].lat,
-                lng: countries[i].lng
+                coords: {
+                    lat: countries[i].lat,
+                    lng: countries[i].lng,
+                },
+                content: {
+                    place: `<h2 class="map-info-text-color">Ort: ${countries[i].place}</h2>` +
+                        `<p class="map-info-text-color">${countries[i].info}</p>`                }
             })
         }
 

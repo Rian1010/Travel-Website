@@ -289,6 +289,10 @@ body {
     height: 70vh;
 }
 
+.map-info-text-color {
+    color: #333;
+}
+
 
 
 /* Search Section */
