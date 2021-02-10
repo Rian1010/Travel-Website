@@ -264,6 +264,10 @@ body {
 
 
 /* Map */
+#resultsContainer {
+    padding-bottom: 30px;
+}
+
 .map-section {
     color: white;
     text-align: center;

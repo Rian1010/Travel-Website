@@ -138,7 +138,7 @@ window.initMap = () => {
             lng: 2.3514616
         },
         {
-            place: "Rome",
+            place: "Rom",
             days: 6,
             price: 70,
             lat: 41.8933203,
@@ -160,15 +160,20 @@ window.initMap = () => {
         }
     ]
 
+    const results = document.getElementById('results');
+    const resultsHeading = document.getElementById('resultsHeading')
+
     const findClosestValues = (userPrice, userDays) => {
         let idxOne = 0;
         let idxTwo = 1;
-        let currentPrice = 2015;
-        let currentDay = 4;
+        let currentPrice;
+        let currentDay;
         let currentPlace;
-        let currentLat;
-        let currentLng;
+        let currentLat = 35.009778;
+        let currentLng = 38.459732;
 
+
+        
         while (idxTwo < countries.length) {
             console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
@@ -205,8 +210,17 @@ window.initMap = () => {
                 console.log("nothing found")
             }
         }
-        console.log("kk " + currentPrice, currentDay, currentPlace, currentLat, currentLng);
+        console.log(currentPrice, currentDay, currentPlace, currentLat, currentLng);
         mapDisplay()
+
+        if (currentPlace === undefined) {
+            resultsHeading.style.display = 'none';
+            results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
+        }
+        else {
+            resultsHeading.style.display = 'inline';
+            results.innerText = `Ort: ${currentPlace}, Tage: ${currentDay}, Preis: ${currentPrice}`;
+        }
     }
     findClosestValues()
 
