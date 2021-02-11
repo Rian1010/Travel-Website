@@ -19,7 +19,7 @@
                 </div>
                 <form action="./destinations.html" onSubmit=searchQuery()>
                     <input type="text" name="search-query" id="searchQuery" class="search-query"
-                        placeholder="Hier suchen">
+                        placeholder="Hier suchen" required>
                     <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -145,10 +145,15 @@
                     <div class="heading-2-search">
                         <h2>Suchen Sie Nach Weiteren Informationen Über Orte!</h2>
                     </div>
-                    <form action="./destinations.html" class="search-input" onSubmit=searchQuery()>
-                        <input type="text" name="search-query-big" id="searchQueryBig"
-                            class="search-query search-query-big" placeholder="Hier suchen">
-                        <button type="submit" class="search-btn-big"><i class="fas fa-search"></i></button>
+                    <form action="./destinations.html" class="search-input" id="searchFormBig" onSubmit=searchQuery()>
+                        <div class="search-big-container">
+                            <input type="text" name="search-query-big" id="searchQueryBig"
+                                class="search-query search-query-big" placeholder="Hier suchen" required>
+                            <button type="submit" class="search-btn-big"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="search-big-container suggestions-container">
+                            <ul id="suggestionsList"></ul>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -158,8 +163,8 @@
     <footer class="footer">
         <div class="container">
             <ul class="social-media-icons-footer">
-                <li class="facebook-footer"><a href="https://www.facebook.com/"
-                        target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li class="facebook-footer"><a href="https://www.facebook.com/" target="_blank"><i
+                            class="fab fa-facebook"></i></a></li>
                 <li class="youtube-footer"><a href="https://www.youtube.com/" target="_blank"><i
                             class="fab fa-youtube"></i></a></li>
                 <li class="instagram-footer"><a href="https://www.instagram.com/" target="_blank"><i
@@ -169,6 +174,8 @@
     </footer>
 
     <script src="./static/js/main.js"></script>
+    <script src="./static/js/searchQuery.js"></script>
+
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgMxd8mBl1TzIxNjrC98gHrkq4zW-RgSE&callback=initMap">
     </script>

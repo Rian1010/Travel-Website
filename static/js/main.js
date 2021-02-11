@@ -52,7 +52,6 @@ next.addEventListener('click', () => {
     banner_title.innerText = `${imageTexts[index]}`
     banner.style.opacity = 1
     banner_title.style.opacity = 1;
-    console.log(index)
 });
 
 prev.addEventListener('click', () => {
@@ -183,7 +182,7 @@ window.initMap = () => {
             place: "Singapore",
             days: 6,
             price: 763.67,
-            lat: 1.357107, 
+            lat: 1.357107,
             lng: 103.8194992,
             info: "Vier Tage für 547,80€ sechs Tage für 763,67€"
         },
@@ -191,7 +190,7 @@ window.initMap = () => {
             place: "Singapur",
             days: 4,
             price: 547.80,
-            lat: 1.357107, 
+            lat: 1.357107,
             lng: 103.8194992,
             info: "Vier Tage für 547,80€ sechs Tage für 763,67€"
         },
@@ -199,23 +198,23 @@ window.initMap = () => {
             place: "Seoul, Südkorea",
             days: 3,
             price: 829.87,
-            lat: 37.5666791, 
+            lat: 37.5666791,
             lng: 126.9782914,
-            info: "Zwei Tage für 583, 89 und vier Tage für 829,87€"
+            info: "Zwei Tage für 583, 89€ und vier Tage für 829,87€"
         },
         {
             place: "Seoul, Südkorea",
             days: 2,
             price: 583.89,
-            lat: 37.5666791, 
+            lat: 37.5666791,
             lng: 126.9782914,
-            info: "Zwei Tage für 583, 89 und vier Tage für 829,87€"
+            info: "Zwei Tage für 583, 89€ und vier Tage für 829,87€"
         },
         {
             place: "Auckland, Neu Zeeland",
             days: 4,
             price: 1570.68,
-            lat: -36.852095, 
+            lat: -36.852095,
             lng: 174.7631803,
             info: "Vier Tage für 1570,68€"
         },
@@ -224,24 +223,24 @@ window.initMap = () => {
             days: 4,
             price: 2635.93,
             lat: -20.1637281,
-            lng:  57.5045331,
-            info: "Vier Tage für 2635,93 und sieben Tage für 3835,93€"
+            lng: 57.5045331,
+            info: "Vier Tage für 2635,93€ und sieben Tage für 3835,93€"
         },
         {
             place: "Port Louis, Mauritius",
             days: 7,
             price: 3835.93,
             lat: -20.1637281,
-            lng:  57.5045331,
-            info: "Vier Tage für 2635,93 und sieben Tage für 3835,93€"
+            lng: 57.5045331,
+            info: "Vier Tage für 2635,93€ und sieben Tage für 3835,93€"
         },
         {
             place: "Shanghai, China",
             days: 4,
             price: 3219.29,
-            lat: 31.2322758, 
-            lng: 121.4692071 ,
-            info: "Vier Tage für 3219,29"
+            lat: 31.2322758,
+            lng: 121.4692071,
+            info: "Vier Tage für 3219,29€"
         },
     ]
 
@@ -261,7 +260,7 @@ window.initMap = () => {
         let currentLng = 38.459732;
 
         while (idxTwo < countries.length) {
-            console.log(idxOne, idxTwo, countries.length)
+            // console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
             let secondPlaceDay = countries[idxTwo].days;
 
@@ -277,7 +276,7 @@ window.initMap = () => {
                 coordinates = new countryPosition(currentLat, currentLng)
                 zoomValue = 7;
 
-                console.log(currentPrice, currentDay, currentPlace);
+                // console.log(currentPrice, currentDay, currentPlace);
                 idxOne++;
             } else if (Math.abs(secondPlacePrice - userPrice) < Math.abs(firstPlacePrice - userPrice) && Math.abs(secondPlaceDay - userDays) < Math.abs(firstPlaceDay - userDays) && secondPlaceDay <= userDays && secondPlacePrice <= userPrice) {
                 currentPrice = secondPlacePrice;
@@ -288,15 +287,14 @@ window.initMap = () => {
                 coordinates = new countryPosition(currentLat, currentLng);
                 zoomValue = 7;
 
-                console.log(currentPrice, currentDay, currentPlace)
+                // console.log(currentPrice, currentDay, currentPlace)
                 idxTwo++;
             } else {
                 idxOne++;
                 idxTwo++;
-                console.log("nothing found")
             }
         }
-        console.log(currentPrice, currentDay, currentPlace, currentLat, currentLng);
+        // console.log(currentPrice, currentDay, currentPlace, currentLat, currentLng);
         if (currentPlace === undefined) {
             resultsHeading.style.display = 'none';
             results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
@@ -334,12 +332,67 @@ window.initMap = () => {
                 },
                 content: {
                     place: `<h2 class="map-info-text-color">Ort: ${countries[i].place}</h2>` +
-                        `<p class="map-info-text-color">${countries[i].info}</p>`                }
+                        `<p class="map-info-text-color">${countries[i].info}</p>`
+                }
             })
         }
 
     }
     findClosestValues()
+
+// Search Queries
+const queryInput = document.getElementById('searchQueryBig');
+const suggestionContainer = document.querySelector('.suggestions-container');
+const suggestionList = document.getElementById('suggestionsList');
+const formBig = document.getElementById('searchFormBig')
+
+const destinationHeadings = [{
+        heading: 'Vereisen Sie in die Türkei ',
+    },
+    {
+        heading: 'Ferien in Singapur ',
+    },
+    {
+        heading: 'Ab nach Mauritius ',
+    },
+    {
+        heading: 'Indonesische Kultur ',
+    },
+    {
+        heading: 'Erleben Sie Die Schönheit Japans ',
+    },
+    {
+        heading: 'Korea, Ein Sich Schnell Entwickelndes Land '
+
+    }
+];
+
+queryInput.addEventListener('keyup', () => {
+    let input = queryInput.value.toLowerCase();
+    suggestionContainer.innerHTML = '';
+    let suggestions = destinationHeadings.filter(destHeading => destHeading.heading.toLowerCase().includes(input));
+
+    suggestions.forEach(suggestion => {
+        const div = document.createElement('div');
+        div.classList.add("search-suggestion");
+        div.innerHTML = suggestion.heading;
+        suggestionContainer.appendChild(div);
+    });
+    if (input === '') {
+        suggestionContainer.innerHTML = ''
+    }
+});
+
+queryInput.addEventListener('change', () => {
+
+    const suggestionItem = document.querySelectorAll('.search-suggestion');
+
+    suggestionItem.forEach(sugg => sugg.addEventListener('click', () => {
+        queryInput.value = sugg.innerText
+        formBig.submit()
+    }))
+})
+
 
     // const mapUpdate = () => {
     //     switch (true) {
