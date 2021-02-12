@@ -4,22 +4,6 @@ const cards = document.querySelector('.cards');
 const destinationCards = document.querySelectorAll('.destination-card');
 const notFound = document.querySelector('.not-found');
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     destinations.forEach(destination => {
-//         const div = document.createElement("div");
-//         const heading = document.createElement("h3");
-//         const paragraph = document.createElement("p");
-
-//         div.className += "destination-card";
-
-
-//         heading.textContent = destination.title;
-//         paragraph.textContent = destination.description;
-//         cards.appendChild(div)
-//         div.appendChild(heading);
-//         div.appendChild(paragraph);
-//     });
-// })
 const searchQuery = () => {
     let searchQ = window.location.href.split("=");
     let secondPart = searchQ[1];

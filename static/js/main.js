@@ -50,6 +50,7 @@ next.addEventListener('click', () => {
 
     banner.style.backgroundImage = `url('${images[index]}')`
     banner_title.innerText = `${imageTexts[index]}`
+
     banner.style.opacity = 1
     banner_title.style.opacity = 1;
 });
@@ -61,9 +62,13 @@ prev.addEventListener('click', () => {
         index = 2;
     }
     banner.style.transition = '0.3s';
+    banner_title.style.transition = "0.3s"
+
     banner.style.backgroundImage = `url('${images[index]}')`
+    banner_title.innerText = `${imageTexts[index]}`
+
+    banner_title.style.opacity = 1;
     banner.style.opacity = 1
-    console.log(index)
 });
 
 
@@ -88,17 +93,6 @@ window.initMap = () => {
 
     let coordinates = new countryPosition(35.009778, 38.459732);
     let zoomValue = 3;
-
-    // Display the map
-    // const mapDisplay = () => {
-    // let map = new google.maps.Map(document.getElementById('map'), {
-    //     center: coordinates,
-    //     zoom: zoomValue,
-    //     gestureHandling: "cooperative",
-    // });
-    // }
-    // mapDisplay()
-
 
     // Update days on days input change
 
@@ -127,13 +121,6 @@ window.initMap = () => {
     }
 
     priceInput.addEventListener('change', priceUpdate);
-
-    // priceBtn.addEventListener('click', e => {
-    //     e.preventDefault();
-    //     priceUpdate() 
-    //     inputtedPrice = priceValue
-    //     mapUpdate();
-    // })
 
     // List of all available places
 
@@ -260,7 +247,6 @@ window.initMap = () => {
         let currentLng = 38.459732;
 
         while (idxTwo < countries.length) {
-            // console.log(idxOne, idxTwo, countries.length)
             let firstPlaceDay = countries[idxOne].days;
             let secondPlaceDay = countries[idxTwo].days;
 
@@ -276,7 +262,6 @@ window.initMap = () => {
                 coordinates = new countryPosition(currentLat, currentLng)
                 zoomValue = 7;
 
-                // console.log(currentPrice, currentDay, currentPlace);
                 idxOne++;
             } else if (Math.abs(secondPlacePrice - userPrice) < Math.abs(firstPlacePrice - userPrice) && Math.abs(secondPlaceDay - userDays) < Math.abs(firstPlaceDay - userDays) && secondPlaceDay <= userDays && secondPlacePrice <= userPrice) {
                 currentPrice = secondPlacePrice;
@@ -287,14 +272,12 @@ window.initMap = () => {
                 coordinates = new countryPosition(currentLat, currentLng);
                 zoomValue = 7;
 
-                // console.log(currentPrice, currentDay, currentPlace)
                 idxTwo++;
             } else {
                 idxOne++;
                 idxTwo++;
             }
         }
-        // console.log(currentPrice, currentDay, currentPlace, currentLat, currentLng);
         if (currentPlace === undefined) {
             resultsHeading.style.display = 'none';
             results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
@@ -304,7 +287,8 @@ window.initMap = () => {
             results.innerHTML = `<b>Ort</b>: ${currentPlace}, <b>Tage</b>: ${currentDay}, Preis: ${currentPrice}€`;
             results.style.color = "white"
         }
-        // mapDisplay()
+
+        // Anzeige von Google Maps
         let map;
         map = new google.maps.Map(document.getElementById('map'), {
             center: coordinates,
@@ -312,7 +296,8 @@ window.initMap = () => {
             gestureHandling: "cooperative",
         });
 
-        function addMarker(props) {
+        // Anzeige der Marker
+        const addMarker = props => {
             let marker = new google.maps.Marker({
                 position: props.coords,
                 map,
@@ -338,12 +323,12 @@ window.initMap = () => {
         }
 
     }
+
     findClosestValues()
 
 // Search Queries
 const queryInput = document.getElementById('searchQueryBig');
 const suggestionContainer = document.querySelector('.suggestions-container');
-const suggestionList = document.getElementById('suggestionsList');
 const formBig = document.getElementById('searchFormBig')
 
 const destinationHeadings = [{
@@ -392,6 +377,9 @@ queryInput.addEventListener('change', () => {
         formBig.submit()
     }))
 })
+
+
+// Der folgende Code wurde verwendet, um zu testen, ob der Hauptzweck von Google Maps funktioniert hat, während ich im Prozess des Codierens war
 
 
     // const mapUpdate = () => {

@@ -138,21 +138,6 @@ body {
     }
 }
 
-.banner-2 {
-    min-width: 110%;
-    height: 110vh;
-    /* https://pixabay.com/photos/travel-lake-feet-resting-hiking-1749508/ */
-    background-image: url('../images/Singapore.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
-}
-
 .banner-content {
     width: 100%;
     height: 100%;
