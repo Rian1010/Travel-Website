@@ -9,7 +9,7 @@ const searchQuery = () => {
     let secondPart = searchQ[1];
     let newQuery = secondPart.replace(/\+/g, "%20");
     let removePercentage = decodeURIComponent(newQuery);
-    let query = removePercentage.replace("%2C", ",")
+    let query = removePercentage.replace("%2C", ",");
     destinationsLowerCase = destinationCards;
     const destinationArr = Array.from(destinationsLowerCase);
 
