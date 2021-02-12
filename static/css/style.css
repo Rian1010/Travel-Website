@@ -201,6 +201,10 @@ body {
 
 /* Destionation */
 
+.section-height {
+    min-height: 75vh;
+}
+
 .cards-section {
     padding: 20px 0;
 }
