@@ -21,7 +21,13 @@ const notFound = document.querySelector('.not-found');
 //     });
 // })
 const searchQuery = () => {
-    let query = currentURL.search.split('=')[1];
+    let searchQ = window.location.href.split("=");
+    let secondPart = searchQ[1];
+    let newQuery = secondPart.replace(/\+/g, "%20");
+    let removePercentage = decodeURIComponent(newQuery);
+    let query = removePercentage.replace("%2C", ",")
+    console.log(query)
+    // let correctQuery = currentURL.search.split('=')[1];
     destinationsLowerCase = destinationCards;
     const destinationArr = Array.from(destinationsLowerCase);
 
