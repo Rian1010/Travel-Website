@@ -11,15 +11,15 @@ window.onscroll = () => {
     img.forEach(e => {
         let speed = e.dataset.speed;
         e.style.transform = `translateY(${scroll * -speed}px)`;
-        banner_title.style.opacity = -scroll / (banner_title.offsetHeight) + 4
+        banner_title.style.opacity = -scroll / (banner_title.offsetHeight) + 4;
 
         arrow_right.style.transform = `translateY(${scroll * -speed}px)`;
-        arrow_right.style.opacity = -scroll / (banner_title.offsetHeight) + 4
+        arrow_right.style.opacity = -scroll / (banner_title.offsetHeight) + 4;
 
         arrow_left.style.transform = `translateY(${scroll * -speed}px)`;
-        arrow_left.style.opacity = -scroll / (banner_title.offsetHeight) + 4
+        arrow_left.style.opacity = -scroll / (banner_title.offsetHeight) + 4;
 
-        e.style.transition = "0s"
+        e.style.transition = "0s";
     });
 };
 
@@ -34,41 +34,46 @@ const banner = document.querySelector('.banner');
 
 let index = 0
 const images = ['./static/images/Banner.jpg', './static/images/Singapore.jpg', './static/images/Indonesia.jpg'];
-const imageTexts = ['Wo fängt Ihre Die Nächste Reise an?', 'Finden Sie Mehr Über Interessante Kultur Heraus!', 'Besuchen Sie Die Schönsten Orte Der Welt!']
-banner.style.backgroundImage = `url('${images[index]}')`
-banner_title.innerText = `${imageTexts[index]}`
+const imageTexts = ['Wo fängt Ihre Die Nächste Reise an?', 'Finden Sie Mehr Über Interessante Kultur Heraus!', 'Besuchen Sie Die Schönsten Orte Der Welt!'];
+
+banner.style.backgroundImage = `url('${images[index]}')`;
+banner_title.innerText = `${imageTexts[index]}`;
 
 next.addEventListener('click', () => {
     banner.style.opacity = 0
     banner_title.style.opacity = 0;
     index++;
+
     if (index >= 3) {
         index = 0;
     }
+
     banner.style.transition = '0.3s';
-    banner_title.style.transition = "0.3s"
+    banner_title.style.transition = "0.3s";
 
-    banner.style.backgroundImage = `url('${images[index]}')`
-    banner_title.innerText = `${imageTexts[index]}`
+    banner.style.backgroundImage = `url('${images[index]}')`;
+    banner_title.innerText = `${imageTexts[index]}`;
 
-    banner.style.opacity = 1
+    banner.style.opacity = 1;
     banner_title.style.opacity = 1;
 });
 
 prev.addEventListener('click', () => {
-    banner.style.opacity = 0
+    banner.style.opacity = 0;
     index--;
+
     if (index <= -1) {
         index = 2;
     }
-    banner.style.transition = '0.3s';
-    banner_title.style.transition = "0.3s"
 
-    banner.style.backgroundImage = `url('${images[index]}')`
-    banner_title.innerText = `${imageTexts[index]}`
+    banner.style.transition = '0.3s';
+    banner_title.style.transition = "0.3s";
+
+    banner.style.backgroundImage = `url('${images[index]}')`;
+    banner_title.innerText = `${imageTexts[index]}`;
 
     banner_title.style.opacity = 1;
-    banner.style.opacity = 1
+    banner.style.opacity = 1;
 });
 
 
@@ -95,8 +100,8 @@ window.initMap = () => {
     let zoomValue = 3;
 
     // Update days on days input change
-
     let daysValue = 7;
+
     daysDisplay.innerText = daysInput.value;
 
     const daysUpdate = () => {
@@ -229,12 +234,12 @@ window.initMap = () => {
             lng: 121.4692071,
             info: "Vier Tage für 3219,29€"
         },
-    ]
+    ];
 
     // Find the closest result for user input
 
     const results = document.getElementById('results');
-    const resultsHeading = document.getElementById('resultsHeading')
+    const resultsHeading = document.getElementById('resultsHeading');
 
     const findClosestValues = (userPrice, userDays) => {
 
@@ -259,7 +264,7 @@ window.initMap = () => {
                 currentPlace = countries[idxOne].place;
                 currentLat = countries[idxOne].lat;
                 currentLng = countries[idxOne].lng;
-                coordinates = new countryPosition(currentLat, currentLng)
+                coordinates = new countryPosition(currentLat, currentLng);
                 zoomValue = 7;
 
                 idxOne++;
@@ -281,7 +286,7 @@ window.initMap = () => {
         if (currentPlace === undefined) {
             resultsHeading.style.display = 'none';
             results.innerText = "Es wurden keine Ergebnisse für Ihre Angaben gefunden.";
-            results.style.color = "red"
+            results.style.color = "red";
         } else {
             resultsHeading.style.display = 'inline';
             results.innerHTML = `<b>Ort</b>: ${currentPlace}, <b>Tage</b>: ${currentDay}, Preis: ${currentPrice}€`;
@@ -319,9 +324,8 @@ window.initMap = () => {
                     place: `<h2 class="map-info-text-color">Ort: ${countries[i].place}</h2>` +
                         `<p class="map-info-text-color">${countries[i].info}</p>`
                 }
-            })
+            });
         }
-
     }
 
     findClosestValues()
@@ -329,7 +333,7 @@ window.initMap = () => {
 // Search Queries
 const queryInput = document.getElementById('searchQueryBig');
 const suggestionContainer = document.querySelector('.suggestions-container');
-const formBig = document.getElementById('searchFormBig')
+const formBig = document.getElementById('searchFormBig');
 
 const destinationHeadings = [{
         heading: 'Vereisen Sie in die Türkei ',
@@ -369,14 +373,13 @@ queryInput.addEventListener('keyup', () => {
 });
 
 queryInput.addEventListener('change', () => {
-
     const suggestionItem = document.querySelectorAll('.search-suggestion');
 
     suggestionItem.forEach(sugg => sugg.addEventListener('click', () => {
-        queryInput.value = sugg.innerText
-        formBig.submit()
-    }))
-})
+        queryInput.value = sugg.innerText;
+        formBig.submit();
+    }));
+});
 
 
 // Der folgende Code wurde verwendet, um zu testen, ob der Hauptzweck von Google Maps funktioniert hat, während ich im Prozess des Codierens war
